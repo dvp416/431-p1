@@ -44,15 +44,35 @@ end
 
 def hello(name)
   # YOUR CODE HERE
-
+  'Hello, ' + name
 end
 
-def starts_with_consonant? s
+def starts_with_consonant?(s)
   # YOUR CODE HERE
+  if s.empty?
+    false
+  elsif (s !~ /\A[aeiouAEIOU!@#$%^&*()]/) && (s =~ /[\w]*/)
+    true
+  else
+    false
+  end
 end
 
-def binary_multiple_of_4? s
+def binary_multiple_of_4?(s)
   # YOUR CODE HERE
+  if s.empty?
+    false
+  elsif s == '0'
+    true
+  elsif s.length < 3
+    false
+  elsif s.chars.any? {|digit| digit !~ /[01]/}
+    false
+  elsif (s.chars[s.length-2] == '0' && s.chars[s.length-1] == '0')
+    true
+  else
+    false
+  end
 end
 
 # Part 3
