@@ -2,8 +2,19 @@
 
 # Part 1
 
-def sum arr
+def sum(arr)
   # YOUR CODE HERE
+  if arr.empty?
+    return 0
+  else
+    i = 0
+    out = 0
+    while i < arr.length
+      out += arr[i]
+      i += 1
+    end
+    return out
+  end
 end
 
 def max_2_sum arr
