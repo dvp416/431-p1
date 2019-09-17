@@ -58,12 +58,50 @@ def starts_with_consonant?(s)
   end
 end
 
-def binary_multiple_of_4? s
+def binary_multiple_of_4?(s)
   # YOUR CODE HERE
+  if s.empty?
+    false
+  elsif s == '0'
+    true
+  elsif s.length < 3
+    false
+  elsif s.chars.any? {|digit| digit !~ /[01]/}
+    false
+  elsif (s.chars[s.length-2] == '0' && s.chars[s.length-1] == '0')
+    true
+  else
+    false
+  end
 end
 
 # Part 3
 
 class BookInStock
 # YOUR CODE HERE
+attr_reader :isbn, :price
+attr_writer :isbn, :price
+
+def initialize(isbn, price)
+  if isbn.empty? || price <= 0
+    raise(ArgumentError, 'Argument Error')
+  end
+    @isbn = isbn
+    @price = price
+  end
+
+def price_as_string
+  decimal = false
+  if (@price.to_s.include? ".")
+    decimal = true
+  end
+
+  out = '$' + @price.to_s
+  if !decimal
+    out += '.00'
+  elsif (@price.to_s.index('.') == @price.to_s.length - 2)
+    out += '0'
+  end
+  out
+end
 end
