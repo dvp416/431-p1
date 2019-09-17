@@ -79,4 +79,26 @@ end
 
 class BookInStock
 # YOUR CODE HERE
+def initialize(isbn, price)
+  if isbn.empty? || price <= 0
+    raise(ArgumentError, 'Argument Error')
+  end
+    @isbn = isbn
+    @price = price
+  end
+
+def price_as_string
+  decimal = false
+  if (@price.to_s.include? ".")
+    decimal = true
+  end
+
+  out = '$' + @price.to_s
+  if !decimal
+    out += '.00'
+  elsif (@price.to_s.index('.') == @price.to_s.length - 2)
+    out += '0'
+  end
+  out
+end
 end
